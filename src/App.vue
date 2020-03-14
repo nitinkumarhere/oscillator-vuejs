@@ -1,17 +1,14 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Oscillator/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Oscillator from './components/Oscillator.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Oscillator
   }
 }
 </script>
