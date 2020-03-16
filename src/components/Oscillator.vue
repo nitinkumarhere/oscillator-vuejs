@@ -10,7 +10,7 @@
                     <input id="on-off" type="button" value="start" v-on:click="start">
                     <span>Click to start oscillator</span>
                     <p>Use slider to modify frequency</p>
-                    <input id="freq-slider" type= "range" min="0" max="100" step="1" v-model="freqSliderVal">
+                    <input id="freq-slider" type= "range" min="0" max="20000" step="1" v-model="freqSliderVal">
                 </form>
             </div>
             <div class="osc-controls">
@@ -60,9 +60,9 @@ export default {
             if (!this.osc) {
             console.log("Oscillator is stopped. Waiting for oscillator to start");
             } else {
-            this.osc.frequency.value = this.freqSliderVal*10;
+            this.osc.frequency.value = this.freqSliderVal;
             console.log("Oscillator is playing. Frequency value is " +
-                this.freqSliderVal*10);
+                this.freqSliderVal);
             }
             return 
         },
@@ -82,7 +82,7 @@ export default {
             if(!this.osc) {
                 console.log("osc", this.osc)
                 this.osc = this.audioContext.createOscillator()
-                this.osc.frequency.value = this.freqSliderVal*10
+                this.osc.frequency.value = this.freqSliderVal
                 console.log(this.freqSliderVal)
                 this.osc.connect(this.audioContext.destination)
                 this.osc.start(this.audioContext.currentTime)
@@ -98,8 +98,6 @@ export default {
         },
         
         select : function (event) {
-            console.log(event.target.id)
-            console.log(event)
             this.selectedWaveform = event.target.id //document.getElementById(event.target.id).id
             console.log(this.selectedWaveform)
             this.selectedWaveformElement = document.getElementById(event.target.id);
